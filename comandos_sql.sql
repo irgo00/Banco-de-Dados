@@ -60,6 +60,19 @@ SELECT *
 FROM cliente
 WHERE cliente_id IN (1, 2, 3);
 
+---------------------- BETWEEN ---------------------------------
+trás todos os resultados que estão no intervalo indicado
+
+SELECT _____
+FROM tabela
+WHERE _____ BETWEEN _____ AND _____;
+
+--clientes com id entre 1 e 20:
+
+SELECT *
+FROM cliente
+WHERE cliente_id BETWEEN 1 AND 20;
+
 ------------------------------ ORDER BY --------------------------------
 SELECT _________ 
 FROM tabela 
