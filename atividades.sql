@@ -26,3 +26,21 @@ INSERT INTO filme (filme_id, titulo, descricao, ano_de_lancamento, idioma_id, id
 VALUES (1001, 'The Godfather', 'História de Mafiosos', 1972, 1, 2, 3, 4.99, 180, 18.99, 'NC-17', 'Deleted Scenes', '2024-07-18 17:19:25');
 
 --FAZER UM DASHBOARD COM O TOTAL DE VENDAS DO ANO E DO MÊS DA LOCADORA
+
+SELECT D.nome categoria, sum(B.preco_da_locacao) "Preço da Locação Mensal"
+FROM aluguel A, filme B, inventario C, categoria D, filme_categoria E
+WHERE A.data_de_devolucao BETWEEN "2005-05-01 00:00:00" AND "2005-05-31 23:59:59"
+AND A.inventario_id = C.inventario_id
+AND B.filme_id = C.filme_id
+AND D.categoria_id = E.categoria_id
+AND E.filme_id = B.filme_id
+GROUP BY D.nome;
+
+SELECT D.nome categoria, sum(B.preco_da_locacao) "Preço da Locação Mensal"
+FROM aluguel A, filme B, inventario C, categoria D, filme_categoria E
+WHERE A.data_de_devolucao BETWEEN "2005-05-01 00:00:00" AND "2005-12-31 23:59:59"
+AND A.inventario_id = C.inventario_id
+AND B.filme_id = C.filme_id
+AND D.categoria_id = E.categoria_id
+AND E.filme_id = B.filme_id
+GROUP BY D.nome;
