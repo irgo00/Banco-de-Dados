@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<Worksheet ss:Name="Table1">
+	<Table>
+		<Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Row>
+			<Cell><Data ss:Type="String">nome</Data></Cell>
+			<Cell><Data ss:Type="String">preco_da_locacao</Data></Cell>
+		</Row>
+
+		<Row>
+			<Cell><Data ss:Type="String">Action</Data></Cell>
+			<Cell><Data ss:Type="Number">169.36</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Animation</Data></Cell>
+			<Cell><Data ss:Type="Number">185.34</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Children</Data></Cell>
+			<Cell><Data ss:Type="Number">173.40</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Classics</Data></Cell>
+			<Cell><Data ss:Type="Number">156.43</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Comedy</Data></Cell>
+			<Cell><Data ss:Type="Number">183.42</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Documentary</Data></Cell>
+			<Cell><Data ss:Type="Number">181.32</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Drama</Data></Cell>
+			<Cell><Data ss:Type="Number">187.38</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Family</Data></Cell>
+			<Cell><Data ss:Type="Number">190.31</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Foreign</Data></Cell>
+			<Cell><Data ss:Type="Number">226.27</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Games</Data></Cell>
+			<Cell><Data ss:Type="Number">198.39</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Horror</Data></Cell>
+			<Cell><Data ss:Type="Number">169.44</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Music</Data></Cell>
+			<Cell><Data ss:Type="Number">150.49</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">New</Data></Cell>
+			<Cell><Data ss:Type="Number">196.37</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Sci-Fi</Data></Cell>
+			<Cell><Data ss:Type="Number">196.39</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Sports</Data></Cell>
+			<Cell><Data ss:Type="Number">231.26</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">Travel</Data></Cell>
+			<Cell><Data ss:Type="Number">184.43</Data></Cell>
+		</Row>	</Table>
+</Worksheet>
+</Workbook>

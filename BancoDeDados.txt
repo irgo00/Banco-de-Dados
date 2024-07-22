@@ -1,0 +1,41 @@
+===========TIPOS DE CARACTERES=============
+
+CHAR: o tamanho é fixo, mantém o que foi definido mesmo que sobre espaços vazios, usado para Strings de tamanho único
+
+VARCHAR: o tamanho se adapta a quantidade de caracteres inseridos, não ocupando espaço a toa, usado para Strings quem mudam de tamanho
+
+==============TIPOS DE NÚMEROS===============
+- FLOAT: números com vírgula, definido como FLOAT(10,2)
+					    FLOAT(5,1)
+					    FLOAT(12,3) etc...
+
+-DECIMAL: mesma coisa que Float
+
+- INT: números inteiros, definido como INT(11)
+				       INT(9)...
+
+- ENUM: uma quantidade fixa de opções, usado para normalizar, como se fosse um combobox (EX: Masculino(0) e Feminino(1))
+								 (EX2: Desativado(0) e Ativado(1))
+
+- CPF usa VARCHAR, pois tem . e -
+
+============COMANDOS BÁSICOS==================
+
+----- Query básica de consulta de dados -----
+SELECT _________ FROM tabela WHERE _________;
+
+----- ORDER BY -----
+SELECT _________ FROM tabela ORDER BY coluna (ASC ou DESC);
+
+----- COUNT() -----
+exibe a quantidade de itens
+
+SELECT COUNT(*)
+FROM tabela;
+
+----- GROUP BY -----
+agrupa os dados iguais
+
+SELECT COUNT(*)
+FROM tabela
+GROUP BY coluna;
