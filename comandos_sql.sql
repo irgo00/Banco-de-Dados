@@ -235,3 +235,52 @@ WHERE A.cliente_id = C.cliente_id
 GROUP BY C.endereco_id
 HAVING count(*) >=20);
 
+----------------------------- VIEWS ----------------------------------
+cria uma "tabela" nova para facilitar a produtividade, porém piora o desempenho do banco
+posso colocar sub consultas dentro da view para facilitar a leitura de querys
+não consigo apagar nem inserir dados em uma view
+é boa prática colocar v_ antes do nome da view
+
+CREATE VIEW nome_view AS (SELECT _____  FROM _____ WHERE _____);
+
+--criar uma view que exibe todos os filmes mais baratos (0.99)
+
+CREATE VIEW v_filmes_baratos AS
+SELECT F.titulo, F.descricao, F.preco_da_locacao
+FROM filme F
+WHERE F.preco_da_locacao = (SELECT MIN(preco_da_locacao) FROM filme);
+
+--criar uma view que exibe o relatório de vendas anuais de cada tipo de filme
+CREATE VIEW v_relatorio_anual_vendas AS
+
+select c.nome 'Categoria', sum(f.preco_da_locacao) 'Preço da Locação'
+from aluguel a, filme f, inventario i, categoria c, filme_categoria fc
+where a.data_de_devolucao between "2005-01-01" and "2005-12-31"
+and a.inventario_id = i.inventario_id
+and f.filme_id = i.filme_id
+and c.categoria_id = fc.categoria_id
+and fc.filme_id = f.filme_id
+group by c.nome;
+
+-- ALTERAR UMA VIEW
+apenas copia o que foi feito no create e altera para alter
+
+ALTER VIEW v_filmes_baratos AS
+SELECT F.titulo, F.descricao, F.preco_da_locacao
+FROM filme F
+WHERE F.preco_da_locacao = (SELECT MAX(preco_da_locacao) FROM filme);
+
+--SUBSTITUIR UMA VIEW
+coloca CREATE OR REPLACE VIEW
+
+CREATE OR REPLACE VIEW v_filmes_baratos AS
+SELECT F.titulo, F.descricao, F.preco_da_locacao
+FROM filme F
+WHERE F.preco_da_locacao = (SELECT MIN(preco_da_locacao) FROM filme);
+
+--APAGAR UMA VIEW
+usa o comando DROP VIEW nome_da_view;
+
+DROP VIEW v_filmes_baratos;
+
+--POSSO ALTERAR OU EXCLUIR DIRETO DO WORKBENCH TAMBÉM
