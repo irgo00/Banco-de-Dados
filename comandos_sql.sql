@@ -18,6 +18,9 @@ representação gráfica do que é retornado em uma query
 
 -------------------------------------------------------------------------------------------------------------------------------*/
 
+--permitir o MySQL executar funções que não alteram em nada no banco
+SET GLOBAL log_bin_trust_function_creators = 1; 
+
 ----------------------------------------------------------COMANDOS BÁSICOS-------------------------------------------------------
 
 --------------------------- WHERE --------------------------
@@ -284,3 +287,53 @@ usa o comando DROP VIEW nome_da_view;
 DROP VIEW v_filmes_baratos;
 
 --POSSO ALTERAR OU EXCLUIR DIRETO DO WORKBENCH TAMBÉM
+
+----------------------------- FUNÇÕES --------------------------------------------------
+uma função realiza comandos dentro dela e retorna algum valor
+dá para criar direto pelo mySQL
+
+DELIMITER $$ --para não dar erro, o mysql irá executar apenas quando encontrar $$ (pode ser qualquer símbolo apenas para substituir o ;, pois se deixar o ; ele irá executar até o DECLARE e dar erro)
+
+CREATE FUNCTION nome_funcao(parâmetros)
+RETURNS _____
+
+BEGIN --mesma coisa que {
+
+DECLARE variável tipoVariável; --declara variáveis
+SET variável = _____;
+RETURN variável;
+
+END$$ --mesma coisa que }
+
+DELIMITER ; --volta ao delimitador padrão
+
+--EXEMPLO: criar uma função que soma dois números:
+
+DELIMITER $$
+CREATE FUNCTION soma(n1 decimal(8,2), n2 decimal(8,2))
+RETURNS decimal(8,2)
+
+BEGIN
+
+DECLARE total decimal(8,2);
+SET total = n1 + n2;
+RETURN total;
+
+END$$
+
+--usar a função:
+
+SELECT soma(x, y);
+
+--criar uma função que passa o id do filme e retorna seu nome:
+
+DELIMITER $$
+CREATE FUNCTION `nome_filme`(id integer) RETURNS varchar(200)
+BEGIN
+
+declare nome varchar(200);
+select F.titulo into nome from filme F where filme_id = id; --INTO joga o resulltado na variável declarada, possibilitando retorno
+
+RETURN nome;
+END$$
+DELIMITER ;
