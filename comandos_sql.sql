@@ -345,3 +345,43 @@ DELIMITER ;
 --DELETAR UMA FUNÇÃO:
 -- botão direito na função > drop function
 -- ou DROP FUNCTION nome_funcao;
+
+-------------------------------------- PROCEDURES ----------------------------------------------
+-se encaixa em modelos MVC (Model, View, Controller)
+-o banco de dados fica na parte do Model, portanto, as procedures ficarão desse lado também
+-usada para executar procedimentos, não necessariamente retorna valores, diferente da função
+
+DELIMITER $$
+CREATE PROCEDURE nome_procedure()
+BEGIN
+      comandos;
+      comandos;
+      comandos;
+END $$
+DELIMITER ;
+
+--CHAMAR UMA PROCEDURE
+
+CALL nome_procedure();
+
+/*CRIAR UMA PROCEDURE QUE CHAMA A FUNÇÃO DE SOMAR*/
+
+ DELIMITER $$
+ CREATE PROCEDURE somar(n1 integer, n2 integer)
+ BEGIN
+	SELECT soma(n1, n2);
+END $$
+DELIMITER ;
+
+CALL somar(5, 5);
+
+/*CRIAR UMA PROCEDURE PARA INSERIR UMA NOVA CATEGORIA*/
+DELIMITER $$
+CREATE PROCEDURE cadastrarCategoria(id INT, nome VARCHAR(50))
+BEGIN
+      INSERT INTO categoria(categoria_id, nome, ultima_atualizacao)
+      VALUES (id, nome, current_timestamp);
+END $$
+DELIMITER ;
+
+CALL cadastrarCategoria(17, 'nova categoria');
