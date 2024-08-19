@@ -44,3 +44,14 @@ AND B.filme_id = C.filme_id
 AND D.categoria_id = E.categoria_id
 AND E.filme_id = B.filme_id
 GROUP BY D.nome;
+
+--CRIAR UMA PROCEDURE PARA INSERIR UM FILME
+DELIMITER $$
+CREATE PROCEDURE inserirFilme(titulo VARCHAR(255), descricao TEXT, anoLancamento YEAR, idiomaID INT, idiomaOriginalID INT, duracaoLocacao INT, precoLocacao DECIMAL(4, 2), duracaoFilme INT, custoSubstituicao DECIMAL(5,2), classificacao ENUM('G','PG','PG-13','R', 'NC-17'), recursosEspeciais set('Trailers','Commentaries','Deleted Scenes','Behind the Scenes'))
+BEGIN
+	INSERT INTO filme 
+    VALUES (1001, titulo, descricao, anoLancamento, idiomaID, idiomaOriginalID, duracaoLocacao, precoLocacao, duracaoFilme, custoSubstituicao, classificacao, recursosEspeciais, current_timestamp);
+END $$
+DELIMITER ;
+
+CALL inserirFilme('O Poderoso Chefão', 'Máfia italiana', 1987, 1, 1, 3, 5.99, 3, 4.99, 'G', 'Commentaries');
