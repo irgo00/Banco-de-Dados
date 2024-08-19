@@ -337,3 +337,11 @@ select F.titulo into nome from filme F where filme_id = id; --INTO joga o resull
 RETURN nome;
 END$$
 DELIMITER ;
+
+-- ALTERAR UMA FUNÇÃO: 
+-- botão direito na função > alter function
+-- ou apaga e cria novamente, fazendo as alterações na criação
+
+--DELETAR UMA FUNÇÃO:
+-- botão direito na função > drop function
+-- ou DROP FUNCTION nome_funcao;
