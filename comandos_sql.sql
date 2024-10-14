@@ -470,3 +470,53 @@ END LOOP loop_test;
 SELECT soma;
 END$$
 DELIMITER ;
+
+------------------ ITERATE -----------------------
+
+/*LOOP DE ACUMULAÇÃO USANDO ITERATE*/
+
+DELIMITER $$
+CREATE PROCEDURE acumula_iterate(limite TINYINT UNSIGNED)
+BEGIN
+	DECLARE contador TINYINT UNSIGNED DEFAULT 0;
+    DECLARE soma INT UNSIGNED DEFAULT 0;
+    
+    teste : LOOP
+	SET contador = contador + 1;
+    SET soma = soma + contador;
+    
+    IF contador < limite THEN
+		ITERATE teste;
+	END IF;
+    
+    LEAVE teste;
+    END LOOP teste;
+    
+    SELECT soma;
+    
+    END $$
+    
+    DELIMITER ;
+
+    -------------------- WHILE ----------------------------
+
+/*CRIAR UMA PROCEDURE PARA INFORMAR QUAIS NÚMEROS SÃO PARES*/
+
+    DELIMITER $$
+
+CREATE PROCEDURE pares(limite TINYINT UNSIGNED)
+main: BEGIN
+
+DECLARE contador TINYINT DEFAULT 0;
+
+meuloop: WHILE contador < limite DO
+	SET contador = contador + 1;
+
+	IF MOD(contador, 2) THEN 
+		ITERATE meuloop;
+	END IF;
+      SELECT CONCAT(contador, 'e um numero par') AS valor;
+END WHILE;
+
+END;
+DELIMITER ;
