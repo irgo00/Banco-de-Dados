@@ -388,6 +388,7 @@ CALL cadastrarCategoria(17, 'nova categoria');
 
 -------------------------------------IF E ELSE --------------------------------
 usado para executar comandos caso certas condições sejam atendidas
+utilizado para poucas condições
 
 IF condição THEN
 SET
@@ -420,3 +421,29 @@ END $$
 DELIMITER ;
 
 SELECT calcula_imposto(3000);
+
+----------------------- CASE -----------------------------------
+mesma coisa que if, porém usado para muitas condições
+
+/*CRIAR FUNÇÃO PARA CALCULAR IMPOSTO USANDO CASE*/
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `calcula_imposto_case`(salario DEC(8,2)) RETURNS decimal(8,2)
+BEGIN
+	DECLARE valor_imposto DECIMAL(8,2);
+    
+    CASE
+    WHEN salario < 1000 THEN
+    SET valor_imposto = salario * 0.15;
+    
+    WHEN salario < 2000 THEN
+    SET valor_imposto = salario * 0.20;
+    
+    WHEN salario < 3000 THEN
+    SET valor_imposto = salario * 0.25;
+    
+    ELSE
+    SET  valor_imposto = salario * 0.27;
+    
+    END CASE;
+RETURN valor_imposto;
+END
