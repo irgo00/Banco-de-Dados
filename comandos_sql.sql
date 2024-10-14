@@ -539,3 +539,40 @@ BEGIN
     SELECT soma;
     END$$
     DELIMITER ;
+
+------------------- BACKUP -------------------------
+
+CREATE TABLE _______ _backup AS SELECT * FROM _________;
+
+/*EXEMPLO: */
+CREATE TABLE city_backup AS select * from city;
+
+/*CRIAR UMA PROCEDURE DE BACKUP DE TABELAS*/
+
+DELIMITER $$
+
+CREATE PROCEDURE insere_dados_backup()
+BEGIN
+	DECLARE done INT DEFAULT 0;
+    DECLARE v_city_id, v_country_id SMALLINT;
+    DECLARE v_city VARCHAR(50);
+    DECLARE v_last_update TIMESTAMP;
+    
+    DECLARE curs CURSOR FOR(
+		SELECT city, city_id, country_id, last_update FROM sakila.city);
+        
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+    
+    OPEN curs;
+    REPEAT 
+    FETCH curs INTO v_city_id, v_city, v_country_id, v_last_update;
+    IF NOT done THEN 
+    
+    INSERT INTO city_backup(city, city_id, country_id, last_update)
+VALUES(v_city_id, v_city, v_country, v_last_update); 
+END IF;
+UNTIL done 
+END REPEAT;
+CLOSE curs;
+END$$
+DELIMITER ;
