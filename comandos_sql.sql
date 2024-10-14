@@ -498,7 +498,7 @@ BEGIN
     
     DELIMITER ;
 
-    -------------------- WHILE ----------------------------
+-------------------- WHILE ----------------------------
 
 /*CRIAR UMA PROCEDURE PARA INFORMAR QUAIS NÚMEROS SÃO PARES*/
 
@@ -520,3 +520,22 @@ END WHILE;
 
 END;
 DELIMITER ;
+
+------------------ REPEAT -------------------------
+ 
+ DELIMITER $$
+
+CREATE PROCEDURE acumula_repeat(limite TINYINT UNSIGNED)
+BEGIN
+	DECLARE contador TINYINT UNSIGNED DEFAULT 0;
+    DECLARE soma INT DEFAULT 0;
+    
+    REPEAT
+		SET contador = contador + 1;
+        SET soma = soma + contador;
+		UNTIL limite <= contador
+    END REPEAT;
+    
+    SELECT soma;
+    END$$
+    DELIMITER ;
