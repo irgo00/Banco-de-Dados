@@ -447,3 +447,26 @@ BEGIN
     END CASE;
 RETURN valor_imposto;
 END
+
+-------------------------- LOOP -------------------------------
+
+/*CRIAÇÃO DE UM LOOP DE ACUMULAÇÃO*/
+
+DELIMITER $$
+CREATE PROCEDURE acumula(limite INT)
+BEGIN
+	DECLARE contador INT DEFAULT 0;
+    DECLARE soma INT DEFAULT 0;
+    
+    loop_test: LOOP
+    
+    SET contador = contador + 1;
+    SET soma = soma + contador;
+    
+    IF contador >= limite THEN
+		LEAVE loop_test;
+    END IF;
+END LOOP loop_test;
+SELECT soma;
+END$$
+DELIMITER ;
