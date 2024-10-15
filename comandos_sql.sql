@@ -576,3 +576,34 @@ END REPEAT;
 CLOSE curs;
 END$$
 DELIMITER ;
+
+--------------------------- TRIGGERS ------------------------------
+
+- funcionam como gatilhos quando um comando dml é invocado
+- Usado em: verificação de integridade de dados, rastreamento de logs, backups
+- não é chamada diretamente, e sim automaticamente
+
+- NÃO TEM COMO ALTERAR UMA TRIGGER, APENAS DELETANDO E CRIANDO DE NOVO
+DROP TRIGGER nome;
+
+CREATE TRIGGER nome timing operacao
+ON tabela
+FOR EACH row
+
+comandos 
+
+TIMING = before ou after
+OPERACAO = insert, update ou delete
+
+/*CRIAR UMA TRIGGER PARA INSERIR UM DESCONTO DE 10% PARA CADA PRODUTO VENDIDO*/
+
+CREATE TRIGGER tr_desconto BEFORE INSERT
+ON payment
+FOR EACH ROW
+SET new.amount = (new.amount * 0.90);
+
+/*CRIAR UMA TRIGGER PARA FAZER BACKUP A MEDIDA QUE OS DADOS SÃO ADICIONADOS NAS TABELAS*/
+ CREATE TRIGGER backup BEFORE INSERT
+ ON city
+ FOR EACH ROW
+ INSERT INTO city_backup VALUES (new.city_id, new.city, new.country_id, new.last_update);
